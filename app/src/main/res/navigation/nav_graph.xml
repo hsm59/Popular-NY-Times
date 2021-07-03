@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/popularArticlesFragment">
+
+    <fragment
+        android:id="@+id/popularArticlesFragment"
+        android:name="com.hussainm.popularnytimes.articles.view.PopularArticlesFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_popular_articles">
+
+        <action
+            android:id="@+id/navigateToDetails"
+            app:destination="@id/articleDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/articleDetailsFragment"
+        android:name="com.hussainm.popularnytimes.articledetails.ArticleDetailsFragment"
+        android:label="@string/details_title"
+        tools:layout="@layout/fragment_article_details" >
+
+        <argument
+            android:name="articleData"
+            android:defaultValue="@null"
+            app:argType="com.hussainm.popularnytimes.articles.model.Article"
+            app:nullable="true" />
+
+    </fragment>
+</navigation>
