@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -97,4 +98,7 @@ dependencies {
     // Timber for Logging
     def timber_version = "4.7.1"
     implementation "com.jakewharton.timber:timber:$timber_version"
+
+    // Coil for Image loading
+    implementation("io.coil-kt:coil:1.2.2")
 }

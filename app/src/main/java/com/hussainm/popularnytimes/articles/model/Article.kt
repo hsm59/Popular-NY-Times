@@ -1,8 +1,15 @@
 package com.hussainm.popularnytimes.articles.model
 
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Parcelable
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.databinding.BindingAdapter
+import coil.load
 import com.google.gson.annotations.SerializedName
+import com.hussainm.popularnytimes.R
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -51,4 +58,32 @@ data class Article(
     var uri: String? = null,
     @SerializedName("url")
     var url: String? = null
-): Parcelable
+) : Parcelable {
+
+    companion object {
+        @JvmStatic
+        @BindingAdapter("loadImage")
+        fun loadImage(imageView: ImageView, article: Article) {
+            article.getLastMediaUrl()?.let { url ->
+                imageView.scaleType = ImageView.ScaleType.CENTER_CROP
+                imageView.load(url) {
+                    crossfade(true)
+                    placeholder(R.drawable.ic_baseline_image_24)
+                    error(R.drawable.ic_baseline_broken_image_24)
+                }
+            } ?: run {
+                imageView.apply {
+                    scaleType = ImageView.ScaleType.CENTER_INSIDE
+                    load(R.drawable.ic_baseline_broken_image_24)
+                }
+            }
+        }
+    }
+
+    /**
+     * To fetch the highest resolution image
+     */
+    private fun getLastMediaUrl(): String? = media?.lastOrNull()?.getLastImage()
+
+
+}

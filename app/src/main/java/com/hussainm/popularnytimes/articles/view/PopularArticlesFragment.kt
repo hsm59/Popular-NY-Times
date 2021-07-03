@@ -11,7 +11,6 @@ import com.hussainm.popularnytimes.base.BaseFragment
 import com.hussainm.popularnytimes.databinding.FragmentPopularArticlesBinding
 import com.hussainm.popularnytimes.network.utility.Result
 import com.hussainm.popularnytimes.utility.toggleVisibility
-import timber.log.Timber
 
 class PopularArticlesFragment : BaseFragment() {
 

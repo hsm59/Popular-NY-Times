@@ -1,6 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <variable
+            name="articleItem"
+            type="com.hussainm.popularnytimes.articles.model.Article" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/marginStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/_16sdp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/marginEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/_16sdp" />
+
+        <ImageView
+            android:id="@+id/ivBanner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_180sdp"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadImage="@{articleItem}" />
+
+        <TextView
+            android:id="@+id/tvArticleTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{articleItem.title}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toStartOf="@+id/marginEnd"
+            app:layout_constraintStart_toEndOf="@+id/marginStart"
+            app:layout_constraintTop_toBottomOf="@+id/ivBanner"
+            tools:text="Supporters of the Democratic candidate Jon Osoff after his lkjahdskfhj " />
+
+        <TextView
+            android:id="@+id/tvAbstract"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_18sdp"
+            android:drawablePadding="@dimen/_4sdp"
+            android:text="@{articleItem.abstract}"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toStartOf="@+id/marginEnd"
+            app:layout_constraintStart_toEndOf="@+id/marginStart"
+            app:layout_constraintTop_toBottomOf="@+id/tvArticleTitle"
+            tools:text="A consultant in 2018 urged the managers to repair cracked columns and crumbling concrete. The work was finally about to get underway when the building collapsed." />
+
+        <TextView
+            android:id="@+id/tvArticleBy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:text="@{articleItem.byline}"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toStartOf="@+id/marginEnd"
+            app:layout_constraintStart_toEndOf="@+id/marginStart"
+            app:layout_constraintTop_toBottomOf="@+id/tvAbstract"
+            tools:text="By DAVID LEONHARDT and STUART A. THOMPSON" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
