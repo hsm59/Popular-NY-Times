@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Popular NY Times</string>
     <string name="details_title">Details</string>
+    <string name="search">Search</string>
+    <string name="options">Options</string>
+    <string name="today">Today</string>
+    <string name="last_seven">Last 7 days</string>
+    <string name="last_thirty_days">Last 30 days</string>
 </resources>

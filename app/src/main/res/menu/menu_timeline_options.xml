@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_today"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="@string/today"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_last_seven"
+        android:icon="@drawable/ic_baseline_more_vert_24"
+        android:title="@string/last_seven"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_last_thirty"
+        android:icon="@drawable/ic_baseline_more_vert_24"
+        android:title="@string/last_thirty_days"
+        app:showAsAction="never" />
+
+</menu>

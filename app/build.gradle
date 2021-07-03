@@ -35,7 +35,7 @@ android {
     productFlavors {
         prod {
             dimension "default"
-            buildConfigField 'String', 'API_KEY', '"jMHYwbxVbwuGKAApU9P0NmUgoSuxbyzv"'
+            buildConfigField 'String', 'API_KEY', '""'
             buildConfigField 'String', 'BASE_URL', '"https://api.nytimes.com/svc/"'
         }
     }

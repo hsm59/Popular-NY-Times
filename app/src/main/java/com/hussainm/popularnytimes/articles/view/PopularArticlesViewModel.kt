@@ -4,25 +4,35 @@ import androidx.lifecycle.*
 import com.hussainm.popularnytimes.articles.model.PopularArticleBase
 import com.hussainm.popularnytimes.articles.repository.PopularArticlesRepo
 import com.hussainm.popularnytimes.network.utility.Result
+import com.hussainm.popularnytimes.utility.ALREADY_VIEWING_ARTICLES
+import com.hussainm.popularnytimes.utility.LAST_SEVEN_DAYS
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class PopularArticlesViewModel @Inject constructor(
     private val popularArticlesRepo: PopularArticlesRepo
-): ViewModel() {
+) : ViewModel() {
 
     private val _articles = MutableLiveData<Result<PopularArticleBase>>()
 
     val articles: LiveData<Result<PopularArticleBase>> = _articles
 
-    fun fetchArticles(period: Int = 7) {
+    private var currentSelectedPeriod = 0
+
+    fun fetchArticles(period: Int = LAST_SEVEN_DAYS) {
         viewModelScope.launch {
 
-            _articles.value = Result.loading()
+            if (currentSelectedPeriod != period) {
+                currentSelectedPeriod = period
 
-            val response = popularArticlesRepo.getPopularArticles(period)
+                _articles.value = Result.loading()
 
-            _articles.value = response
+                val response = popularArticlesRepo.getPopularArticles(period)
+
+                _articles.value = response
+            } else {
+                _articles.value = Result.error(ALREADY_VIEWING_ARTICLES)
+            }
 
         }
     }

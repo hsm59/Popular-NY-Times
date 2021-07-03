@@ -23,6 +23,13 @@ class PopularNYTimesActivity : BaseActivity() {
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_popular_ny_times)
         setupNavigation()
         setupVMObservers()
+        setupToolbar()
+    }
+
+    private fun setupToolbar() {
+        setSupportActionBar(dataBinding.toolbar)
+
+        dataBinding.toolbar.setNavigationOnClickListener { onBackPressed() }
     }
 
     private fun setupVMObservers() {
@@ -44,6 +51,10 @@ class PopularNYTimesActivity : BaseActivity() {
 
         NavigationUI.setupWithNavController(dataBinding.toolbar, navController)
     }
+
+    override fun onSupportNavigateUp(): Boolean =
+        navController.navigateUp() || super.onSupportNavigateUp()
+
 
     private fun navigate(destinationPair: Pair<Int, Bundle?>) {
         if (this::navController.isInitialized)
